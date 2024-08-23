@@ -1,4 +1,6 @@
 import WelcomeMessage from './WelcomeMessage'
+import ProfilePage from './ProfilePage';
+import UserContext from './UserContext';
 import UserProfile from './UserProfile';
 import Header from './Header';
 import MainContent from './MainContent';
@@ -10,6 +12,11 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const userData = {
+    name: "Jane Doe",
+    email: "jane.doe@example.com"
+  };
 
   return (
     <>
@@ -48,7 +55,11 @@ function App() {
       <div>
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
       </div>
-
+      <div>
+      <UserContext.Provider value={userData}>
+      <ProfilePage />
+      </UserContext.Provider>
+      </div>
     </>
   )
 }
