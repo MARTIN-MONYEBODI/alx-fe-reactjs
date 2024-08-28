@@ -4,18 +4,21 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import RecipeDetails from './components/RecipeDetails';
+
 
 function App() {
 
   return (
-    <>
-      <div>
-        <h1>Recipe Sharing App</h1>
-        <RecipeList />
-        <AddRecipeForm />
-      </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RecipeList />} />
+        <Route path="/recipes/:id" element={<RecipeDetails />} />
+        <Route path="/add-recipe" element={<AddRecipeForm />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
