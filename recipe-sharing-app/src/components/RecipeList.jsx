@@ -1,7 +1,14 @@
 import { useRecipeStore } from './recipeStore';
+import React from 'react';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore(state => state.recipes);
+    const filteredRecipes = useRecipeStore(state => state.filteredRecipes);
+    const filterRecipes = useRecipeStore(state => state.filterRecipes);
+  
+    React.useEffect(() => {
+      filterRecipes();
+    }, [filterRecipes]);
+    
 
   return (
     <div>
