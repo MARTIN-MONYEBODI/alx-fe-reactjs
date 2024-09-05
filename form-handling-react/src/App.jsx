@@ -8,6 +8,10 @@ function App() {
 
   return (
     <>
+    <div className="App">
+      <h1>Registration Form with Formik</h1>
+      <FormikForm />
+    </div>
     </>
   )
 }
