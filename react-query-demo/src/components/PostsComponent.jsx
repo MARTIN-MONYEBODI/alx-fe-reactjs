@@ -2,16 +2,21 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
+// Define the fetch function to get posts
 const fetchPosts = async () => {
   const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts');
   return data;
 };
 
 const PostsComponent = () => {
-  const { data, error, isLoading, refetch } = useQuery('posts', fetchPosts);
+  // Use useQuery to fetch data
+  const { data, error, isLoading, isError, refetch } = useQuery('posts', fetchPosts);
 
+  // Handle loading state
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+
+  // Handle error state
+  if (isError) return <p>Error: {error.message}</p>;
 
   return (
     <div>
