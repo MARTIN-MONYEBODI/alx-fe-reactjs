@@ -3,6 +3,7 @@ import create from 'zustand';
 const useRecipeStore = create(set => ({
   recipes: [],
   favorites: [],
+  searchTerm: '', // Track the current search term
   
   // Adds a new recipe to the recipes array
   addRecipe: (recipe) => set(state => ({ recipes: [...state.recipes, recipe] })),
@@ -30,8 +31,9 @@ const useRecipeStore = create(set => ({
     favorites: state.favorites.filter(id => id !== recipeId)
   })),
   
-  recommendations: [],
-  
+  // Sets the search term
+  setSearchTerm: (term) => set({ searchTerm: term }),
+
   // Generates recommendations based on favorite recipes
   generateRecommendations: () => set(state => {
     // Mock implementation based on favorites
