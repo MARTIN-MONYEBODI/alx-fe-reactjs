@@ -16,7 +16,8 @@ test('initial todos are rendered', () => {
 
 test('adds a new todo', () => {
   render(<TodoList />);
-  fireEvent.change(screen.getByPlaceholderText(/Add a new todo/i), { target: { value: 'New Todo' } });
+  const input = screen.getByPlaceholderText(/Add a new todo/i);
+  fireEvent.change(input, { target: { value: 'New Todo' } });
   fireEvent.click(screen.getByText(/Add Todo/i));
   expect(screen.getByText(/New Todo/i)).toBeInTheDocument();
 });
@@ -32,6 +33,7 @@ test('toggles a todo', () => {
 
 test('deletes a todo', () => {
   render(<TodoList />);
-  fireEvent.click(screen.getByText(/Delete/i)); // Assuming 'Delete' button is available
+  const deleteButton = screen.getAllByText(/Delete/i)[0];
+  fireEvent.click(deleteButton);
   expect(screen.queryByText(/Learn React/i)).not.toBeInTheDocument();
 });
