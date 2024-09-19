@@ -6,24 +6,33 @@ const AddRecipeForm = () => {
   const [steps, setSteps] = useState('');
   const [errors, setErrors] = useState({});
 
+  // Validate function to handle form validation
+  const validate = () => {
+    const newErrors = {};
+
+    if (!title.trim()) newErrors.title = 'Title is required';
+    if (!ingredients.trim()) newErrors.ingredients = 'Ingredients are required';
+    if (!steps.trim()) newErrors.steps = 'Preparation steps are required';
+
+    return newErrors;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Simple validation
-    const newErrors = {};
-    if (!title) newErrors.title = 'Title is required';
-    if (!ingredients) newErrors.ingredients = 'Ingredients are required';
-    if (!steps) newErrors.steps = 'Preparation steps are required';
-
+    // Perform validation
+    const newErrors = validate();
+    
+    // If there are errors, set them in the state
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
 
-    // Handle form submission (could send to a backend or log)
+    // Form is valid, proceed with form submission
     console.log({ title, ingredients, steps });
 
-    // Clear form
+    // Clear the form after submission
     setTitle('');
     setIngredients('');
     setSteps('');
