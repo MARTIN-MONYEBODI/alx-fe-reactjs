@@ -1,4 +1,4 @@
-iimport React, { useState } from 'react';
+import React, { useState } from 'react';
 import { fetchAdvancedSearchResults } from '../services/githubService';
 
 const Search = () => {
