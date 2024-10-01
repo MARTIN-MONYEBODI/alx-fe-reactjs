@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base URL for GitHub's Search API for users
-const BASE_URL = 'https://api.github.com/search/users';
+const BASE_URL = 'https://api.github.com/search/users?q';
 
 /**
  * Fetch users based on advanced search parameters like username, location, and minRepos (minimum number of repositories).
